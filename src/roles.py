@@ -1,3 +1,7 @@
+import os
+
+from game_settings import get_image
+
 class Civilian:
     def __init__(self, name, is_healed=False, is_shot=False, is_checked=False, is_fucked=False):
         self.name = name
@@ -5,6 +9,7 @@ class Civilian:
         self.is_shot = is_shot
         self.is_checked = is_checked
         self.is_fucked = is_fucked
+        self.image = get_image(self.__class__.__name__)
 
     def act_message(self):
         return "Опиши свои мысли перед сном"
@@ -39,7 +44,6 @@ class Whore(Civilian):
 
     def action(self, act: int, message: str = "") -> list:
         return [act, message]
-
 
 
 

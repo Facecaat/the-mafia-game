@@ -1,3 +1,5 @@
+import os.path
+
 from exceptions.exceptions import WrongAmountOfPlayers, WrongConversationTime
 
 class Settings:
@@ -24,13 +26,19 @@ class Settings:
                     continue
                 if self.conversation_time not in range(1, 6):
                     raise WrongConversationTime
-                print("Настройки успешно установлены")
+                print("Настройки успешно установлены\n")
                 break
             except WrongConversationTime as e:
                 print(e.message)
             except WrongAmountOfPlayers as e:
                 print(e.message)
 
+def get_image(role):
+    current_directory = os.path.dirname(os.path.abspath(__file__))
+    img_dir = os.path.join(current_directory, 'img')
+    image_file = [f for f in os.listdir(img_dir) if
+                   f.lower().startswith(role.lower()) and f.lower().endswith(('.png', '.jpg', '.jpeg', '.gif'))]
+    return os.path.join(img_dir, *image_file)
 
 
 

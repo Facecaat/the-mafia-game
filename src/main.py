@@ -9,6 +9,7 @@ if __name__ == '__main__':
     current_settings = Settings()
     current_settings.setup()
     application = Application(current_settings)
+    application.run()
 
 
 
